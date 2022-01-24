@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Frontend Mentor | Interactive comments section</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      /* .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); } */
+
+      * {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      @media only screen and (max-width: 550px) {
+        #imgs {
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;
+        }
+      }
+      #imgs {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+      }
+      #heart{
+        transition: .3s;
+      }
+      #heart:hover{
+        transition: .3s;
+        transform: scale(1.1);
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- Pull dynamic content from the data.json file -->
+
+    <div class="attribution">
+      <div
+        style="
+          max-width: 90%;
+          border-radius: 10px;
+          display: block;
+          margin: auto;
+          margin-top: 50px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              margin-bottom: 15px;
+              margin-left: -3px;
+            "
+          >
+            <img
+              src="https://mir-s3-cdn-cf.behance.net/user/276/5e4175543273395.5f2100124bf1f.jpg"
+              alt=""
+              id="imgs"
+              style="display: block; margin-left: 10px"
+            />
+            <h3></h3>
+          </div>
+          <img
+          src="ui.gif"
+          style="
+              border-radius: 15px;
+              max-width: 90%;
+              display: block;
+              margin-bottom: 18px;
+              "
+            alt=""
+            />
+            <div style="display: flex; align-items: center;">
+              <i id='heart' class="fa fa-heart" style="font-size: 2.1rem;margin-left: 10px;cursor:pointer"></i>
+          <h3 id="l_count" style="font-weight: bolder;margin-left: 8px;opacity: .5;width: 40px;">920</h3>
+              <i id="heart" class="fa fa-comment" style="font-size: 2.1rem;margin-left: 50px;cursor:pointer"></i>
+          <h3 id="l_count" style="font-weight: bolder;margin-left: 8px;opacity: .5;">1.2k</h3>
+        </div>
+        <button id="btn">Click</button>
+        <br />
+        <br />
+        <textarea></textarea>
+        </div>
+     
+
+    <script>
+      let element = document.getElementById("heart");
+      let l_count = document.getElementById("l_count");
+      let flag=true;
+      element.addEventListener("click", (e) => {
+        if(flag){
+          e.target.style.color="orangered"
+          flag=false
+          let count=Number(l_count.innerHTML);
+          l_count.innerHTML=count+1
+          
+        }else{
+          e.target.style.color="black"
+          flag=true;
+          let count=Number(l_count.innerHTML);
+          l_count.innerHTML=count-1
+        }
+      });
+    </script>
+  </body>
+</html>
