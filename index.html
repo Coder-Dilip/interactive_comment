@@ -13,115 +13,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="style.css">
   <title>Dilip Interactive comments section</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    /* .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); } */
 
-    * {
-      font-family: "Montserrat", sans-serif;
-    }
-
-    @media only screen and (max-width: 550px) {
-      #imgs {
-        width: 30px;
-        height: 30px;
-        border-radius: 30px;
-      }
-    }
-
-    #imgs {
-      width: 50px;
-      height: 50px;
-      border-radius: 50px;
-    }
-
-    #heart {
-      transition: .3s;
-    }
-
-    #heart:hover {
-      transition: .3s;
-      transform: scale(1.1);
-    }
-
-    #comment_area {
-      /* visibility: hidden; */
-      transition: .5s;
-      border: 2px solid black;
-      transform: translateY(10px);
-      border-radius: 5px;
-      outline: none;
-    }
-
-    .parent_comment {
-      /* border: 2px solid black; */
-      transition: .3s;
-      display: block;
-      width: 70%;
-      max-width: 450px;
-      padding: 10px;
-      background-color: rgb(248, 248, 248);
-      margin-bottom: 40px;
-      border-radius: 10px;
-      animation: zoomout .3s;
-    }
-
-    @keyframes zoomout {
-      0% {
-        transform: translateY(20px);
-      }
-
-      100% {
-        transform: translateY(0px);
-      }
-    }
-
-    @keyframes zoomdown {
-      0% {
-        transform: translateY(0px);
-        opacity: 1;
-      }
-
-      100% {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-    }
-
-
-    .parent_profile {
-      display: flex;
-      align-items: center;
-      margin-bottom: 15px;
-      margin-left: -3px;
-    }
-
-    .profile_img {
-      width: 35px;
-      height: 35px;
-      border-radius: 35px;
-      display: block;
-      margin-left: 10px;
-      object-fit: cover;
-    }
-
-    .parent_profile>h3 {
-      margin-left: 10px;
-      font-weight: bold;
-      font-size: 1rem;
-
-    }
-
-    .comment_text_content {
-      margin-left: 10px;
-      margin-top: -7px;
-      opacity: 0.7;
-      margin-right: 15px;
-    }
-  </style>
 </head>
 
 <body>
@@ -171,24 +67,47 @@
         </div>
         <div id="comment_section" style="margin-bottom: 10px;">
           <div id="comment_add">
-            <div class="parent_comment" style="margin-top: 30px;">
-              <div class="parent_profile">
-                <img
-                  src="https://thumbs.dreamstime.com/b/handsome-man-hair-style-beard-beauty-face-portrait-fashion-male-model-black-hair-high-resolution-handsome-man-125031765.jpg"
-                  alt="" class="profile_img" />
-                <h3>Suresh Kapoor</h3>
-              </div>
-              <p class="comment_text_content"> My name is dilip pokhrel. I know who I am</p>
-            </div>
+
+            <!-- first comment -->
             <div class="parent_comment">
               <div class="parent_profile">
-                <img
+                <div class="profile_child">
+                  <img
+                  src="  https://thumbs.dreamstime.com/b/handsome-man-hair-style-beard-beauty-face-portrait-fashion-male-model-black-hair-high-resolution-handsome-man-125031765.jpg"
+                  alt="" class="profile_img" />
+                <h3>Suresh Kapoor</h3>
+                </div>
+                <i  title="Delete" class="fa fa-trash delete"></i>
+              
+              </div>
+              <p class="comment_text_content"> My name is dilip pokhrel I live in kathmandu</p>
+              <div class="reply_edit_wrapper">
+              <i class="fa fa-reply reply_icon"></i>
+              <i class="fa fa-edit edit_icon"></i>
+              </div>
+            </div>
+
+          
+
+            <!-- Second comment -->
+            <div class="parent_comment">
+              <div class="parent_profile">
+                <div class="profile_child">
+                  <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYIq_EfuH69viLPqhxcdIFT3UPGoDYkrAiN7UpdPkMaYbbQYLgijtsl6vIm3ZBS6AvN6Y&usqp=CAU"
                   alt="" class="profile_img" />
                 <h3>Andrew Lohani</h3>
+                </div>
+                <i  title="Delete" class="fa fa-trash delete"></i>
+              
               </div>
               <p class="comment_text_content"> My name is dilip pokhrel</p>
+              <div class="reply_edit_wrapper">
+              <i class="fa fa-reply reply_icon"></i>
+              <i class="fa fa-edit edit_icon"></i>
+              </div>
             </div>
+
           </div>
         </div>
 
@@ -199,92 +118,7 @@
       </div>
 
 
-      <script>
-
-        // Navigate to my website
-        function dilipProfile() {
-          window.open('https://dilipbackend.xyz/intro', '_blank');
-        }
-
-        let element = document.getElementById("heart");
-        let cmt_element = document.getElementById("comment");
-        let l_count = document.getElementById("l_count");
-        let flag = true;
-        element.addEventListener("click", (e) => {
-          if (flag) {
-            e.target.style.color = "orangered"
-            flag = false
-            let count = Number(l_count.innerHTML);
-            l_count.innerHTML = count + 1
-
-          } else {
-            e.target.style.color = "black"
-            flag = true;
-            let count = Number(l_count.innerHTML);
-            l_count.innerHTML = count - 1
-          }
-        });
-
-        // Comment area animation
-        comment_area = document.getElementById("comment_area");
-        cmt_element.addEventListener("click", (() => {
-          comment_area.focus()
-          comment_area.style.border = "2px solid rgba(255, 68, 0, 0.801)"
-          comment_area.style.transform = "translateY(-10px)"
-        }))
-
-
-        // For handing the comment input  --start
-
-        current_input = "";
-        const inputHandler = function (e) {
-          current_input = e.target.value
-        }
-
-        // Create parent/main comments
-        function createMenuItem(name) {
-          let div = document.createElement('div');
-          div.textContent = name;
-          div.classList = "parent_comment"
-          return div;
-        }
-
-        const comment_wrapper = document.querySelector('#comment_add');
-        // add the user profile items
-
-
-        comment_area.addEventListener("keyup", function (e) {
-          let parent_element = document.getElementById("comment_add")
-          let child_element = document.createElement("div")
-          if (e.keyCode == 13) {
-            if (current_input) {
-              comment_wrapper.appendChild(createMenuItem(current_input));
-            }
-            comment_area.value = ""
-            current_input = ""
-          }
-        })
-
-        // for Chrome
-        comment_area.addEventListener('input', inputHandler);
-
-        // for firefox and other stupid browsers
-        comment_area.addEventListener('propertychange', inputHandler)
-        // For handing the comment input  --end
-
-
-        // remove comment with animation
-        function remove() {
-          document.getElementById("remove_comment").style.animation = "zoomdown .3s"
-          setTimeout(() => {
-
-            document.getElementById("remove_comment").remove()
-          }, 300);
-        }
-
-
-
-      </script>
+<script src="index.js"></script>
 </body>
 
 </html>
